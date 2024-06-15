@@ -1,4 +1,4 @@
-const { index, show, create, update, destroy } = require("../purchasesController")
+const { index, destroy } = require("../purchasesController")
 const purchases = require("../data/purchases.json");
 
 describe("index()", () => {

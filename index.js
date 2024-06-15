@@ -12,10 +12,15 @@ function run() {
       console.log(formattedPurchase);
       break;
     case "create":
+      const newPurchases = create(purchases, values);
+      console.log(newPurchases);
       break;
     case "show":
+      console.log(show(purchases, 1))
       break;
     case "update":
+      const updatedPurchases = update(purchases, process.argv.splice(3));
+      console.log(updatedPurchases);
       break;
     case "destroy":
       break;

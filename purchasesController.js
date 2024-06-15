@@ -2,7 +2,7 @@ const chalk = require("chalk")
 const { nanoid } = require("nanoid")
 
 function index(purchases) {
-    return purchases.map(purchase => ({[purchase.id]: purchase.name,}))
+    return purchases.length ? purchases.map(purchase => ({[purchase.id]: purchase.name,})) : "No products purchased."
 }
 
 function show(purchases, purchaseId) {

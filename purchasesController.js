@@ -1,6 +1,7 @@
 const chalk = require("chalk")
 const { nanoid } = require("nanoid")
 
+
 function index(purchases) {
     return purchases.length ? purchases.map(purchase => ({[purchase.id]: purchase.name,})) : "No products purchased."
 }
@@ -32,19 +33,13 @@ function update(purchases, values) {
         const [key, value] = prop.split("=");
         purchases[index][key] = value;
     })
-    // const index = purchases.findIndex(purchase => purchase.id === id)
-    
-    // const [name, amount, donation] = values;
-
-    // purchases[index].name = name;
-    // purchases[index].amount = amount;
-    // purchases[index].donation = donation;
 
     return purchases;
 }
 
 function destroy(purchases, id) {
-    return purchases.filter((purchase) => purchase.id !==id)
+    let filtered = purchases.filter((purchase) => purchase.id !==id)
+    return filtered.length === purchases ? filtered : "No Products Match Id"
 }
 
 module.exports = { index, show, create, update, destroy }

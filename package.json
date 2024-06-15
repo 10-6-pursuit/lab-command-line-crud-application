@@ -9,7 +9,7 @@
     "show": "node index.js index show",
     "create": "node index.js create",
     "update": "node index.js update",
-    "delete": "node index.js delete"
+    "delete": "node index.js destroy"
   },
   "keywords": [],
   "author": "",

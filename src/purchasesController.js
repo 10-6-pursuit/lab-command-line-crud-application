@@ -10,7 +10,7 @@ function index(purchases) {
 function show(purchases, id) {
     const purchase = purchases.find((purchase) => purchase.id === id);
 
-    `${chalk.green("id")} ${id} ${chalk.green("name")} ${purchase.name} ${chalk.green("amount")} ${purchase.amount} ${chalk.green("donation")} ${chalk.yellow(purchase.donation)}`;
+    return `${chalk.green("id")} ${id} ${chalk.green("name")} ${purchase.name} ${chalk.green("amount")} ${purchase.amount} ${chalk.green("donation")} ${chalk.yellow(purchase.donation)}`;
 }
 
 function create(purchases, values) {
@@ -26,10 +26,11 @@ function create(purchases, values) {
     return purchases;
 }
 
-function update(purchases, id, values) {
+function update(purchases, values) {
+    const id = values.find((ele) => ele.split("=")[0] === "id").split("=")[1];
+    
     const index = purchases.findIndex((purchase) => purchase.id === id);
 
-    const id = values.find((ele) => ele.split("=")[0] === "id").split("=")[1];
 
     values.forEach((prop) => {
         const [key, value] = prop.split("=");

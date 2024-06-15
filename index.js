@@ -17,10 +17,16 @@ function run() {
             inform(singlePurchase)
             break;
         case "create":
+            const newPurchase = create(purchases, process.argv.slice(3))
+            inform(newPurchase)
             break;
         case "update":
+            const updatePurchases = update(purchases, process.argv.slice(3));
+            inform(updatePurchases)
             break;
         case "destroy":
+            const destroyedPurchases = destroy(purchases, process.argv[3])
+            inform(destroyedPurchases)
             break;
     }
 }

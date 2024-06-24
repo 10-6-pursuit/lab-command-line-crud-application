@@ -73,6 +73,40 @@ function roundToTwo(num) {
   return Math.round(num * 100) / 100;
 }
 
+
+
+
+// function create(purchases, values) {
+//     const newPurchase = {
+//         id: nanoid(6),
+//         name: '',
+//         amount: '',
+//         donation: ''
+//     };
+
+//     // Loop through the key-value pairs provided in the command line arguments
+//     values.forEach(pair => {
+//         const [key, value] = pair.split('=');
+
+//         // Set the value of the corresponding property in the new purchase object
+//         if (key === 'name') {
+//             newPurchase.name = value;
+//         } else if (key === 'amount') {
+//             newPurchase.amount = parseFloat(value);
+//         }
+//         // Add additional conditions for other properties if needed
+//     });
+
+//     // Calculate donation
+//     newPurchase.donation = roundToTwo(Math.ceil(newPurchase.amount) - newPurchase.amount);
+
+//     // Add the new purchase to the purchases array
+//     purchases.push(newPurchase);
+
+//     return purchases;
+// }
+
+
 module.exports = { create, index, show, update, destroy, total };
 
 

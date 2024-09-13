@@ -2,43 +2,57 @@
 // When providing user feedback use `inform`
 // When developing/debugging use `console.log`
 
-import { purchase } from "./purchases.js";
-import { readJSONFile, writeJSONFile } from "./src/helpers.js";
+
+im
+const { writeJSONFile, readJSONFile } = require("./src/helpers.js");
+const {
+  create,
+  destroy,
+  edit,
+  index,
+  show,
+} = require("./src/purchaseController.js");
+
 
 const inform = console.log;
 
 function run() {
   const action = process.argv[2];
-  const purchase= process.argv[3];
-  let purchases= readJSONFile("./data", "purchases.json");
+  const purchase = process.argv[3];
+  let purchases = readJSONFile("data", "purchases.json");
   let writeToFile = false;
-  let updatedAnimals = [];
-
+  let updatedPurchases = [];
   switch (action) {
-    
     case "index":
-      inform(action, purchases);
+      const purchasesView = index(purchase);
+      inform(purchasesView);
       break;
     case "create":
-      inform(action, purchase);
+      updatedPurchases = create(purchases, purchase);
       writeToFile = true;
       break;
     case "show":
-      inform(action, purchase);
+      const purchaseView = show(purchases, purchase);
+      inform(purchaseView);
       break;
     case "update":
-      inform(action, purchase);
+      updatedPurchases = edit(purchases, purchase, process.argv[4]);
       writeToFile = true;
       break;
     case "destroy":
-      inform(action, purchase);
+      updatedPurchases = destroy(purchases, purchase);
       writeToFile = true;
       break;
     case "score":
-      inform(action);
+      const score = purchases.reduce((acc, curr) => acc + curr.points, 0);
+      inform("Current score", score);
       break;
     default:
       inform("There was an error.");
   }
+  if (writeToFile) {
+    writeJSONFile("data", "purchases.json", updatedPurchases);
+  }
 }
 run();
+

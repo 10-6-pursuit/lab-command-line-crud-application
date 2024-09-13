@@ -6,19 +6,19 @@ function create(purchases, purchaseName) {
     return purchases;
   }
 
-  function show(purchases, purchaseId) {
+function show(purchases, purchaseId) {
     const purchase = purchases.find((purchase) => purchase.id === purchaseId);
     return purchase;
   }
 
   
-  function update(purchases, purchaseId, purchaseName) {
+function update(purchases, purchaseId, purchaseName) {
     const purchase = purchases.find((purchase) => purchase.id === purchaseId);
     purchase.name = purchaseName;
     return purchases;
   }
 
-  function destroy(purchases, purchaseId) {
+function destroy(purchases, purchaseId) {
     const purchaseIndex = purchases.findIndex((purchase) => purchase.id === purchaseId);
     purchases.splice(purchaseIndex, 1);
     return purchases;
